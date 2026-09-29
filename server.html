@@ -7,7 +7,7 @@
 
     <meta
         name="description"
-        content="View the live Sydney Roleplay ER:LC server."
+        content="View the live Sydney Roleplay ER:LC private server."
     >
 
     <title>Live Server | Sydney Roleplay</title>
@@ -17,7 +17,6 @@
 
 <body>
 
-
 <!-- ========================================
      NAVBAR
 ======================================== -->
@@ -25,14 +24,12 @@
 <header class="navbar">
 
     <a href="index.html" class="nav-brand">
-
         <img
             src="assets/images/logo.png"
             alt="Sydney Roleplay Logo"
         >
 
         <span>Sydney Roleplay</span>
-
     </a>
 
 
@@ -51,10 +48,7 @@
             Home
         </a>
 
-        <a
-            href="server.html"
-            class="active"
-        >
+        <a href="server.html" class="active">
             Live Server
         </a>
 
@@ -70,10 +64,7 @@
             Regulations
         </a>
 
-        <a
-            href="contact.html"
-            class="nav-button"
-        >
+        <a href="contact.html" class="nav-button">
             Contact
         </a>
 
@@ -82,16 +73,20 @@
 </header>
 
 
-
 <!-- ========================================
-     SERVER HERO
+     PAGE
 ======================================== -->
 
-<main class="server-page">
+<main class="server-v2-page">
 
-    <section class="server-heading">
 
-        <div>
+    <!-- ========================================
+         HEADER
+    ======================================== -->
+
+    <section class="server-v2-heading">
+
+        <div class="server-v2-title">
 
             <p class="section-label">
                 SYDNEY ROLEPLAY
@@ -102,26 +97,192 @@
             </h1>
 
             <p>
-                View the current status of the Sydney
-                Roleplay ER:LC server and see who's
-                currently in-game.
+                Live information directly from the Sydney
+                Roleplay ER:LC private server.
             </p>
 
         </div>
 
 
-        <div
-            class="server-status-badge"
-            id="serverStatusBadge"
-        >
+        <div class="server-v2-status-area">
 
-            <span
-                class="status-dot"
-                id="statusDot"
-            ></span>
+            <div
+                class="server-status-badge"
+                id="serverStatusBadge"
+            >
+                <span class="status-dot"></span>
 
-            <span id="serverStatus">
-                Loading...
+                <span id="serverStatus">
+                    Connecting...
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         MAIN SERVER CARD
+    ======================================== -->
+
+    <section class="server-v2-card">
+
+        <div class="server-v2-card-top">
+
+            <div>
+
+                <div class="server-v2-live-label">
+                    <span></span>
+                    LIVE SERVER
+                </div>
+
+                <h2 id="serverName">
+                    Sydney Roleplay
+                </h2>
+
+                <p>
+                    ER:LC Private Server
+                </p>
+
+            </div>
+
+
+            <div class="server-v2-actions">
+
+                <button
+                    class="server-refresh-button"
+                    id="refreshServer"
+                    type="button"
+                >
+                    <span id="refreshIcon">↻</span>
+                    Refresh
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="server-v2-stats">
+
+            <div class="server-v2-stat">
+
+                <p>
+                    PLAYERS
+                </p>
+
+                <strong id="playerCount">
+                    --
+                </strong>
+
+                <span id="capacityText">
+                    Loading...
+                </span>
+
+            </div>
+
+
+            <div class="server-v2-stat blue">
+
+                <p>
+                    QUEUE
+                </p>
+
+                <strong id="queueCount">
+                    --
+                </strong>
+
+                <span>
+                    Waiting to join
+                </span>
+
+            </div>
+
+
+            <div class="server-v2-stat">
+
+                <p>
+                    STAFF
+                </p>
+
+                <strong id="staffCount">
+                    --
+                </strong>
+
+                <span>
+                    Currently online
+                </span>
+
+            </div>
+
+
+            <div class="server-v2-stat blue">
+
+                <p>
+                    CAPACITY
+                </p>
+
+                <strong id="serverCapacity">
+                    --
+                </strong>
+
+                <span>
+                    Maximum players
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- PLAYER BAR -->
+
+        <div class="server-capacity-container">
+
+            <div class="server-capacity-top">
+
+                <span>
+                    Server Capacity
+                </span>
+
+                <span id="capacityPercent">
+                    0%
+                </span>
+
+            </div>
+
+
+            <div class="server-capacity-bar">
+
+                <div
+                    class="server-capacity-fill"
+                    id="capacityFill"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LAST UPDATE -->
+
+        <div class="server-v2-update">
+
+            <span class="update-pulse"></span>
+
+            <span>
+                Live data
+            </span>
+
+            <span class="update-divider">
+                •
+            </span>
+
+            <span id="lastUpdated">
+                Waiting for server...
             </span>
 
         </div>
@@ -129,126 +290,13 @@
     </section>
 
 
-
     <!-- ========================================
-         SERVER OVERVIEW
+         CURRENT PLAYERS
     ======================================== -->
 
-    <section class="server-overview-card">
+    <section class="server-v2-players">
 
-        <div class="server-overview-top">
-
-            <div>
-
-                <p class="section-label">
-                    LIVE STATUS
-                </p>
-
-                <h2>
-                    Sydney Roleplay
-                </h2>
-
-                <p class="server-description">
-                    Live information from our ER:LC
-                    private server.
-                </p>
-
-            </div>
-
-
-            <a
-                href="#"
-                class="server-join-button"
-                id="joinServerButton"
-            >
-                Join Server
-                <span>→</span>
-            </a>
-
-        </div>
-
-
-
-        <!-- STATS -->
-
-        <div class="server-stats">
-
-            <div class="server-stat">
-
-                <span
-                    class="server-stat-value"
-                    id="playerCount"
-                >
-                    --
-                </span>
-
-                <span class="server-stat-label">
-                    PLAYERS
-                </span>
-
-            </div>
-
-
-            <div class="server-stat blue-stat">
-
-                <span
-                    class="server-stat-value"
-                    id="queueCount"
-                >
-                    --
-                </span>
-
-                <span class="server-stat-label">
-                    QUEUE
-                </span>
-
-            </div>
-
-
-            <div class="server-stat">
-
-                <span
-                    class="server-stat-value"
-                    id="staffCount"
-                >
-                    --
-                </span>
-
-                <span class="server-stat-label">
-                    STAFF ON DUTY
-                </span>
-
-            </div>
-
-
-            <div class="server-stat blue-stat">
-
-                <span
-                    class="server-stat-value"
-                    id="serverCapacity"
-                >
-                    --
-                </span>
-
-                <span class="server-stat-label">
-                    CAPACITY
-                </span>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ========================================
-         PLAYERS
-    ======================================== -->
-
-    <section class="players-section">
-
-        <div class="players-header">
+        <div class="server-v2-players-heading">
 
             <div>
 
@@ -260,27 +308,59 @@
                     Current Players
                 </h2>
 
-            </div>
-
-
-            <div class="player-search">
-
-                <input
-                    type="text"
-                    id="playerSearch"
-                    placeholder="Search players..."
-                    autocomplete="off"
-                >
+                <p id="playerSummary">
+                    Loading players...
+                </p>
 
             </div>
 
         </div>
 
 
+        <!-- CONTROLS -->
 
-        <div class="player-table-container">
+        <div class="player-controls">
 
-            <div class="player-table-header">
+            <div class="player-search-v2">
+
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    id="playerSearch"
+                    placeholder="Search player, team or callsign..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <select
+                id="teamFilter"
+                class="player-filter"
+            >
+                <option value="all">
+                    All Teams
+                </option>
+            </select>
+
+
+            <button
+                id="staffFilter"
+                class="staff-filter-button"
+                type="button"
+            >
+                Staff Only
+            </button>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="player-table-v2">
+
+            <div class="player-table-v2-header">
 
                 <span>
                     PLAYER
@@ -294,20 +374,25 @@
                     CALLSIGN
                 </span>
 
+                <span>
+                    PERMISSION
+                </span>
+
             </div>
 
 
-            <div
-                class="player-list"
-                id="playerList"
-            >
+            <div id="playerList">
 
-                <div class="players-loading">
+                <div class="server-v2-loading">
 
                     <div class="server-loader"></div>
 
+                    <h3>
+                        Connecting to ER:LC
+                    </h3>
+
                     <p>
-                        Loading server players...
+                        Retrieving live server information...
                     </p>
 
                 </div>
@@ -319,63 +404,44 @@
     </section>
 
 
-
     <!-- ========================================
-         SERVER INFORMATION
+         INFORMATION
     ======================================== -->
 
-    <section class="server-info-grid">
+    <section class="server-v2-info-grid">
 
+        <article class="server-v2-info-card">
 
-        <article class="server-info-card">
-
-            <div class="server-info-icon">
+            <span class="server-v2-info-number">
                 01
-            </div>
+            </span>
 
             <h3>
                 Live Information
             </h3>
 
             <p>
-                Server information automatically refreshes
-                so you can see what's happening in-game.
+                Server information is automatically
+                refreshed every 30 seconds using the
+                Sydney Roleplay live server connection.
             </p>
 
         </article>
 
 
-        <article class="server-info-card">
+        <article class="server-v2-info-card blue">
 
-            <div class="server-info-icon blue">
+            <span class="server-v2-info-number">
                 02
-            </div>
-
-            <h3>
-                Join the Community
-            </h3>
-
-            <p>
-                Join Sydney Roleplay and experience
-                Australian emergency services roleplay.
-            </p>
-
-        </article>
-
-
-        <article class="server-info-card">
-
-            <div class="server-info-icon">
-                03
-            </div>
+            </span>
 
             <h3>
                 Our Departments
             </h3>
 
             <p>
-                Explore NSW Police, Australian Federal
-                Police, Ambulance and other opportunities.
+                Explore Sydney Roleplay's emergency
+                services and specialist divisions.
             </p>
 
             <a href="departments.html">
@@ -384,10 +450,28 @@
 
         </article>
 
+
+        <article class="server-v2-info-card">
+
+            <span class="server-v2-info-number">
+                03
+            </span>
+
+            <h3>
+                Community
+            </h3>
+
+            <p>
+                Become part of Sydney Roleplay and
+                participate in Australian-based ER:LC
+                roleplay.
+            </p>
+
+        </article>
+
     </section>
 
 </main>
-
 
 
 <!-- ========================================
@@ -405,7 +489,9 @@
                 alt="Sydney Roleplay Logo"
             >
 
-            <span>Sydney Roleplay</span>
+            <span>
+                Sydney Roleplay
+            </span>
 
         </div>
 
