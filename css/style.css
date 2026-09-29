@@ -2978,4 +2978,1525 @@ button {
         grid-template-columns: 1fr;
     }
 
+}/* ========================================
+   SYDNEY ROLEPLAY
+   LIVE SERVER V2
+======================================== */
+
+.server-v2-page {
+    min-height: 100vh;
+
+    padding:
+        145px 7% 100px;
+
+    background:
+        radial-gradient(
+            circle at 15% 5%,
+            rgba(143, 240, 181, 0.08),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(114, 199, 255, 0.07),
+            transparent 28%
+        ),
+        #050908;
+}
+
+
+/* ========================================
+   PAGE HEADER
+======================================== */
+
+.server-v2-heading {
+    max-width: 1250px;
+
+    margin:
+        0 auto 40px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content:
+        space-between;
+
+    gap: 30px;
+}
+
+
+.server-v2-title h1 {
+    margin:
+        8px 0 18px;
+
+    font-size:
+        clamp(
+            48px,
+            7vw,
+            82px
+        );
+
+    line-height: 0.95;
+
+    letter-spacing: -4px;
+}
+
+
+.server-v2-title h1 span {
+    color: var(--green);
+}
+
+
+.server-v2-title > p:last-child {
+    max-width: 560px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   STATUS
+======================================== */
+
+.server-status-badge {
+    padding:
+        11px 16px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius:
+        100px;
+
+    color:
+        var(--muted);
+
+    font-size: 9px;
+
+    font-weight: 850;
+
+    letter-spacing: 0.8px;
+
+    text-transform: uppercase;
+}
+
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    background: #68736d;
+
+    border-radius: 50%;
+}
+
+
+.server-status-badge.online {
+    color:
+        var(--green);
+
+    border-color:
+        rgba(
+            143,
+            240,
+            181,
+            0.18
+        );
+}
+
+
+.server-status-badge.online
+.status-dot {
+    background:
+        var(--green);
+
+    box-shadow:
+        0 0 12px
+        rgba(
+            143,
+            240,
+            181,
+            0.65
+        );
+}
+
+
+.server-status-badge.offline {
+    color: #ff8585;
+
+    border-color:
+        rgba(
+            255,
+            133,
+            133,
+            0.18
+        );
+}
+
+
+.server-status-badge.offline
+.status-dot {
+    background:
+        #ff8585;
+}
+
+
+/* ========================================
+   SERVER CARD
+======================================== */
+
+.server-v2-card {
+    max-width: 1250px;
+
+    margin:
+        0 auto 80px;
+
+    padding: 38px;
+
+    background:
+        radial-gradient(
+            circle at 5% 10%,
+            rgba(143, 240, 181, 0.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 95% 10%,
+            rgba(114, 199, 255, 0.07),
+            transparent 30%
+        ),
+        #09100e;
+
+    border:
+        1px solid
+        #18251f;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0, 0, 0, 0.16);
+}
+
+
+.server-v2-card-top {
+    padding-bottom: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    gap: 30px;
+
+    border-bottom:
+        1px solid
+        #18251f;
+}
+
+
+.server-v2-live-label {
+    margin-bottom: 9px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color:
+        var(--green);
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.3px;
+}
+
+
+.server-v2-live-label span {
+    width: 6px;
+    height: 6px;
+
+    background:
+        var(--green);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 10px
+        rgba(
+            143,
+            240,
+            181,
+            0.6
+        );
+}
+
+
+.server-v2-card-top h2 {
+    margin-bottom: 6px;
+
+    font-size: 27px;
+
+    letter-spacing: -1px;
+}
+
+
+.server-v2-card-top p {
+    color:
+        var(--muted);
+
+    font-size: 10px;
+}
+
+
+/* ========================================
+   REFRESH
+======================================== */
+
+.server-refresh-button {
+    padding:
+        11px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
+
+    color:
+        #dbe7e0;
+
+    border:
+        1px solid
+        #1e3028;
+
+    border-radius: 7px;
+
+    font-family: inherit;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.server-refresh-button:hover {
+    color:
+        var(--green);
+
+    border-color:
+        rgba(
+            143,
+            240,
+            181,
+            0.3
+        );
+
+    transform:
+        translateY(-1px);
+}
+
+
+.server-refresh-button.loading
+#refreshIcon {
+    animation:
+        serverRefreshSpin
+        0.8s
+        linear
+        infinite;
+}
+
+
+@keyframes serverRefreshSpin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+/* ========================================
+   STATS
+======================================== */
+
+.server-v2-stats {
+    padding:
+        35px 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    border-bottom:
+        1px solid
+        #18251f;
+}
+
+
+.server-v2-stat {
+    padding:
+        5px 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    border-right:
+        1px solid
+        #18251f;
+}
+
+
+.server-v2-stat:first-child {
+    padding-left: 0;
+}
+
+
+.server-v2-stat:last-child {
+    border-right: 0;
+}
+
+
+.server-v2-stat p {
+    margin-bottom: 10px;
+
+    color:
+        #66756d;
+
+    font-size: 7px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.4px;
+}
+
+
+.server-v2-stat strong {
+    margin-bottom: 6px;
+
+    color:
+        var(--green);
+
+    font-size: 29px;
+
+    font-weight: 850;
+
+    letter-spacing: -1px;
+}
+
+
+.server-v2-stat.blue strong {
+    color:
+        var(--blue);
+}
+
+
+.server-v2-stat span {
+    color:
+        #6f7d75;
+
+    font-size: 8px;
+}
+
+
+/* ========================================
+   CAPACITY BAR
+======================================== */
+
+.server-capacity-container {
+    padding-top: 28px;
+}
+
+
+.server-capacity-top {
+    margin-bottom: 10px;
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    color:
+        #77867e;
+
+    font-size: 8px;
+
+    font-weight: 750;
+}
+
+
+.server-capacity-bar {
+    width: 100%;
+    height: 5px;
+
+    overflow: hidden;
+
+    background:
+        #111b17;
+
+    border-radius: 100px;
+}
+
+
+.server-capacity-fill {
+    width: 0%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--green),
+            var(--blue)
+        );
+
+    border-radius:
+        100px;
+
+    transition:
+        width 0.5s ease;
+}
+
+
+/* ========================================
+   LAST UPDATED
+======================================== */
+
+.server-v2-update {
+    margin-top: 17px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color:
+        #65736b;
+
+    font-size: 7px;
+
+    font-weight: 750;
+
+    letter-spacing: 0.4px;
+}
+
+
+.update-pulse {
+    width: 5px;
+    height: 5px;
+
+    background:
+        var(--green);
+
+    border-radius: 50%;
+}
+
+
+.update-divider {
+    color:
+        #344039;
+}
+
+
+/* ========================================
+   PLAYERS
+======================================== */
+
+.server-v2-players {
+    max-width: 1250px;
+
+    margin:
+        0 auto 80px;
+}
+
+
+.server-v2-players-heading {
+    margin-bottom: 22px;
+}
+
+
+.server-v2-players-heading h2 {
+    margin:
+        5px 0 7px;
+
+    font-size: 30px;
+
+    letter-spacing: -1px;
+}
+
+
+.server-v2-players-heading
+p:last-child {
+    color:
+        var(--muted);
+
+    font-size: 9px;
+}
+
+
+/* ========================================
+   CONTROLS
+======================================== */
+
+.player-controls {
+    margin-bottom: 15px;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.player-search-v2 {
+    flex: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        0 14px;
+
+    background:
+        #09100e;
+
+    border:
+        1px solid
+        #18251f;
+
+    border-radius: 8px;
+}
+
+
+.player-search-v2 span {
+    color:
+        var(--green);
+
+    font-size: 17px;
+}
+
+
+.player-search-v2 input {
+    width: 100%;
+
+    padding:
+        12px 0;
+
+    background:
+        transparent;
+
+    color: white;
+
+    border: none;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 10px;
+}
+
+
+.player-filter,
+.staff-filter-button {
+    min-width: 135px;
+
+    padding:
+        0 14px;
+
+    background:
+        #09100e;
+
+    color:
+        #aab7b0;
+
+    border:
+        1px solid
+        #18251f;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 9px;
+
+    font-weight: 750;
+}
+
+
+.staff-filter-button {
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.staff-filter-button:hover,
+.staff-filter-button.active {
+    color:
+        var(--green);
+
+    border-color:
+        rgba(
+            143,
+            240,
+            181,
+            0.3
+        );
+
+    background:
+        rgba(
+            143,
+            240,
+            181,
+            0.04
+        );
+}
+
+
+/* ========================================
+   PLAYER TABLE
+======================================== */
+
+.player-table-v2 {
+    overflow: hidden;
+
+    background:
+        #09100e;
+
+    border:
+        1px solid
+        #18251f;
+
+    border-radius: 12px;
+}
+
+
+.player-table-v2-header,
+.player-row-v2 {
+    display: grid;
+
+    grid-template-columns:
+        2fr
+        1.5fr
+        0.9fr
+        1fr;
+
+    align-items: center;
+}
+
+
+.player-table-v2-header {
+    padding:
+        13px 20px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.015
+        );
+
+    color:
+        #5f6d65;
+
+    border-bottom:
+        1px solid
+        #18251f;
+
+    font-size: 7px;
+
+    font-weight: 900;
+
+    letter-spacing: 1.2px;
+}
+
+
+.player-row-v2 {
+    min-height: 72px;
+
+    padding:
+        12px 20px;
+
+    border-bottom:
+        1px solid
+        #15201b;
+
+    transition:
+        background 0.2s;
+}
+
+
+.player-row-v2:last-child {
+    border-bottom: none;
+}
+
+
+.player-row-v2:hover {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(
+                143,
+                240,
+                181,
+                0.025
+            ),
+            rgba(
+                114,
+                199,
+                255,
+                0.015
+            )
+        );
+}
+
+
+/* ========================================
+   PLAYER PROFILE
+======================================== */
+
+.player-v2-user {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.player-v2-avatar {
+    width: 39px;
+    height: 39px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(
+                143,
+                240,
+                181,
+                0.12
+            ),
+            rgba(
+                114,
+                199,
+                255,
+                0.08
+            )
+        );
+
+    color:
+        var(--green);
+
+    border:
+        1px solid
+        rgba(
+            143,
+            240,
+            181,
+            0.13
+        );
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    font-weight: 900;
+}
+
+
+.player-v2-name {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items:
+        flex-start;
+
+    gap: 5px;
+}
+
+
+.player-v2-name strong {
+    color:
+        #edf4f0;
+
+    font-size: 10px;
+}
+
+
+.player-online-dot,
+.player-member-text {
+    color:
+        var(--green);
+
+    font-size: 6px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.8px;
+}
+
+
+.player-member-text {
+    color:
+        #65736b;
+}
+
+
+/* ========================================
+   TEAM BADGES
+======================================== */
+
+.team-badge {
+    display: inline-flex;
+
+    padding:
+        6px 9px;
+
+    border-radius: 5px;
+
+    font-size: 7px;
+
+    font-weight: 800;
+}
+
+
+.team-civilian {
+    background:
+        rgba(
+            143,
+            240,
+            181,
+            0.06
+        );
+
+    color:
+        #9be7b7;
+
+    border:
+        1px solid
+        rgba(
+            143,
+            240,
+            181,
+            0.11
+        );
+}
+
+
+.team-police {
+    background:
+        rgba(
+            114,
+            199,
+            255,
+            0.07
+        );
+
+    color:
+        var(--blue);
+
+    border:
+        1px solid
+        rgba(
+            114,
+            199,
+            255,
+            0.13
+        );
+}
+
+
+.team-medical {
+    background:
+        rgba(
+            255,
+            130,
+            130,
+            0.07
+        );
+
+    color:
+        #ff9c9c;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            130,
+            130,
+            0.13
+        );
+}
+
+
+.team-dot {
+    background:
+        rgba(
+            255,
+            204,
+            110,
+            0.07
+        );
+
+    color:
+        #ffd17e;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            204,
+            110,
+            0.13
+        );
+}
+
+
+.team-other {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.04
+        );
+
+    color:
+        #a5b0aa;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.07
+        );
+}
+
+
+/* ========================================
+   CALLSIGN
+======================================== */
+
+.player-v2-callsign {
+    color:
+        #8d9a93;
+
+    font-size: 9px;
+
+    font-weight: 700;
+}
+
+
+/* ========================================
+   PERMISSIONS
+======================================== */
+
+.permission-badge {
+    display: inline-flex;
+
+    padding:
+        6px 9px;
+
+    border-radius: 5px;
+
+    font-size: 7px;
+
+    font-weight: 850;
+}
+
+
+.permission-owner {
+    background:
+        rgba(
+            143,
+            240,
+            181,
+            0.08
+        );
+
+    color:
+        var(--green);
+
+    border:
+        1px solid
+        rgba(
+            143,
+            240,
+            181,
+            0.16
+        );
+}
+
+
+.permission-admin {
+    background:
+        rgba(
+            114,
+            199,
+            255,
+            0.08
+        );
+
+    color:
+        var(--blue);
+
+    border:
+        1px solid
+        rgba(
+            114,
+            199,
+            255,
+            0.16
+        );
+}
+
+
+.permission-moderator,
+.permission-staff {
+    background:
+        rgba(
+            183,
+            150,
+            255,
+            0.08
+        );
+
+    color:
+        #c9b1ff;
+
+    border:
+        1px solid
+        rgba(
+            183,
+            150,
+            255,
+            0.14
+        );
+}
+
+
+.permission-member {
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.035
+        );
+
+    color:
+        #7f8d85;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.06
+        );
+}
+
+
+/* ========================================
+   EMPTY / LOADING
+======================================== */
+
+.server-v2-loading,
+.server-v2-empty {
+    min-height: 220px;
+
+    padding: 40px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.server-v2-loading h3,
+.server-v2-empty h3 {
+    margin:
+        14px 0 7px;
+
+    font-size: 14px;
+}
+
+
+.server-v2-loading p,
+.server-v2-empty p {
+    color:
+        var(--muted);
+
+    font-size: 9px;
+}
+
+
+.server-loader {
+    width: 26px;
+    height: 26px;
+
+    border:
+        2px solid
+        #1c2923;
+
+    border-top-color:
+        var(--green);
+
+    border-radius: 50%;
+
+    animation:
+        serverLoaderSpin
+        0.8s linear
+        infinite;
+}
+
+
+@keyframes serverLoaderSpin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+.empty-player-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        var(--green);
+
+    background:
+        rgba(
+            143,
+            240,
+            181,
+            0.06
+        );
+
+    border:
+        1px solid
+        rgba(
+            143,
+            240,
+            181,
+            0.12
+        );
+
+    border-radius: 10px;
+
+    font-size: 18px;
+}
+
+
+.empty-player-icon.error {
+    color:
+        #ff8585;
+
+    background:
+        rgba(
+            255,
+            133,
+            133,
+            0.06
+        );
+
+    border-color:
+        rgba(
+            255,
+            133,
+            133,
+            0.12
+        );
+}
+
+
+.empty-retry-button {
+    margin-top: 18px;
+
+    padding:
+        10px 15px;
+
+    background:
+        var(--green);
+
+    color:
+        #061009;
+
+    border: none;
+
+    border-radius: 6px;
+
+    font-family: inherit;
+
+    font-size: 8px;
+
+    font-weight: 850;
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   INFO CARDS
+======================================== */
+
+.server-v2-info-grid {
+    max-width: 1250px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+}
+
+
+.server-v2-info-card {
+    min-height: 215px;
+
+    padding: 28px;
+
+    background:
+        #09100e;
+
+    border:
+        1px solid
+        #18251f;
+
+    border-radius: 12px;
+}
+
+
+.server-v2-info-number {
+    display: block;
+
+    margin-bottom: 42px;
+
+    color:
+        var(--green);
+
+    font-size: 8px;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.server-v2-info-card.blue
+.server-v2-info-number {
+    color:
+        var(--blue);
+}
+
+
+.server-v2-info-card h3 {
+    margin-bottom: 9px;
+
+    font-size: 16px;
+}
+
+
+.server-v2-info-card p {
+    color:
+        var(--muted);
+
+    font-size: 9px;
+
+    line-height: 1.8;
+}
+
+
+.server-v2-info-card a {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    color:
+        var(--green);
+
+    font-size: 8px;
+
+    font-weight: 850;
+
+    text-decoration: none;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 850px) {
+
+    .server-v2-page {
+        padding:
+            125px 20px 80px;
+    }
+
+
+    .server-v2-heading {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+
+    .server-v2-title h1 {
+        letter-spacing:
+            -2px;
+    }
+
+
+    .server-v2-card {
+        padding: 24px;
+    }
+
+
+    .server-v2-card-top {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+
+    .server-v2-stats {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            25px 0;
+    }
+
+
+    .server-v2-stat {
+        padding:
+            5px 20px;
+    }
+
+
+    .server-v2-stat:nth-child(1),
+    .server-v2-stat:nth-child(3) {
+        padding-left: 0;
+    }
+
+
+    .server-v2-stat:nth-child(2) {
+        border-right: none;
+    }
+
+
+    .player-controls {
+        flex-direction:
+            column;
+    }
+
+
+    .player-search-v2,
+    .player-filter,
+    .staff-filter-button {
+        width: 100%;
+        min-height: 43px;
+    }
+
+
+    .player-table-v2-header {
+        display: none;
+    }
+
+
+    .player-row-v2 {
+        grid-template-columns:
+            1fr;
+
+        gap: 16px;
+
+        padding: 18px;
+    }
+
+
+    .server-v2-info-grid {
+        grid-template-columns:
+            1fr;
+    }
+
 }
