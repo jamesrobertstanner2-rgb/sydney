@@ -1156,4 +1156,6 @@
         grid-template-columns: 1fr;
     }
 
+}.discord-login-button {
+    text-decoration: none;
 }
