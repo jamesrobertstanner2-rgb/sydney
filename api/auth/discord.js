@@ -1,146 +1,43 @@
-document.addEventListener("DOMContentLoaded", () => {
-
-    console.log("Discord dashboard script loaded.");
-
-    const params = new URLSearchParams(window.location.search);
-    const encodedDiscord = params.get("discord");
-
-    console.log("Discord data received:", encodedDiscord);
-
-    if (!encodedDiscord) {
-        console.error("No Discord data was provided to the dashboard.");
-        return;
-    }
+export default function handler(req, res) {
 
     try {
 
-        let base64 = encodedDiscord
-            .replace(/-/g, "+")
-            .replace(/_/g, "/");
+        const clientId = process.env.DISCORD_CLIENT_ID;
+        const redirectUri = process.env.DISCORD_REDIRECT_URI;
 
-        while (base64.length % 4) {
-            base64 += "=";
+        if (!clientId) {
+            return res.status(500).json({
+                error: "DISCORD_CLIENT_ID is missing."
+            });
         }
 
-        const decodedText = atob(base64);
-        const user = JSON.parse(decodedText);
-
-        console.log("Logged in Discord user:", user);
-
-        const displayName =
-            user.globalName ||
-            user.username ||
-            "Discord User";
-
-        /* ================================
-           USERNAME
-        ================================ */
-
-        const dashboardUsername =
-            document.getElementById("dashboardUsername");
-
-        if (dashboardUsername) {
-            dashboardUsername.textContent = displayName;
+        if (!redirectUri) {
+            return res.status(500).json({
+                error: "DISCORD_REDIRECT_URI is missing."
+            });
         }
 
+        const params = new URLSearchParams({
+            client_id: clientId,
+            response_type: "code",
+            redirect_uri: redirectUri,
+            scope: "identify"
+        });
 
-        const welcomeUsername =
-            document.getElementById("welcomeUsername");
+        const discordUrl =
+            `https://discord.com/oauth2/authorize?${params.toString()}`;
 
-        if (welcomeUsername) {
-            welcomeUsername.textContent = displayName;
-        }
-
-
-        /* ================================
-           DISCORD CARD
-        ================================ */
-
-        document
-            .querySelectorAll(".dashboard-account-info strong")
-            .forEach(element => {
-                element.textContent = user.username;
-            });
-
-
-        /* ================================
-           PROFILE
-        ================================ */
-
-        document
-            .querySelectorAll(".dashboard-profile-details")
-            .forEach(section => {
-
-                const label = section.querySelector("p");
-                const value = section.querySelector("strong");
-
-                if (!label || !value) return;
-
-                if (
-                    label.textContent
-                        .trim()
-                        .toUpperCase() === "DISCORD USERNAME"
-                ) {
-                    value.textContent = user.username;
-                }
-
-            });
-
-
-        /* ================================
-           AVATAR
-        ================================ */
-
-        const avatarElements =
-            document.querySelectorAll(
-                ".dashboard-avatar, " +
-                ".dashboard-mini-avatar, " +
-                ".dashboard-profile-avatar"
-            );
-
-
-        if (user.avatar && user.id) {
-
-            const avatarURL =
-                `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=128`;
-
-            avatarElements.forEach(element => {
-
-                const img = document.createElement("img");
-
-                img.src = avatarURL;
-                img.alt = displayName;
-
-                img.style.width = "100%";
-                img.style.height = "100%";
-                img.style.objectFit = "cover";
-                img.style.borderRadius = "inherit";
-
-                element.innerHTML = "";
-                element.appendChild(img);
-
-            });
-
-        } else {
-
-            const initial =
-                displayName.charAt(0).toUpperCase();
-
-            avatarElements.forEach(element => {
-                element.textContent = initial;
-            });
-
-        }
-
-        console.log("Discord dashboard updated successfully.");
+        return res.redirect(302, discordUrl);
 
     } catch (error) {
 
-        console.error(
-            "Discord dashboard error:",
-            error
-        );
+        console.error("Discord OAuth start error:", error);
+
+        return res.status(500).json({
+            error: "Unable to start Discord login.",
+            message: error.message
+        });
 
     }
 
-});
+}
