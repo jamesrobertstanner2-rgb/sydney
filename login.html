@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Sydney Roleplay</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="account-body">
+
+    <main class="login-page">
+
+        <section class="login-card">
+
+            <a href="index.html" class="login-logo">
+
+                <img
+                    src="assets/images/logo.png"
+                    alt="Sydney Roleplay"
+                >
+
+                <span>
+                    Sydney Roleplay
+                </span>
+
+            </a>
+
+
+            <div class="login-heading">
+
+                <p class="section-label">
+                    MEMBER PORTAL
+                </p>
+
+                <h1>
+                    Welcome back.
+                </h1>
+
+                <p>
+                    Sign in with Discord to access your
+                    Sydney Roleplay member dashboard.
+                </p>
+
+            </div>
+
+
+            <button
+                class="discord-login-button"
+                id="discordLogin"
+                type="button"
+            >
+
+                <span class="discord-icon">
+                    ◈
+                </span>
+
+                Continue with Discord
+
+            </button>
+
+
+            <div class="login-info">
+
+                <span>
+                    SECURE LOGIN
+                </span>
+
+                <p>
+                    Sydney Roleplay only requests the
+                    Discord information required to
+                    identify your account.
+                </p>
+
+            </div>
+
+
+            <a
+                href="index.html"
+                class="login-return"
+            >
+                ← Return to Sydney Roleplay
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const loginButton =
+            document.getElementById("discordLogin");
+
+
+        loginButton.addEventListener(
+            "click",
+            () => {
+
+                /*
+                    Discord OAuth will be connected
+                    here in the next stage.
+                */
+
+                window.location.href =
+                    "dashboard.html";
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

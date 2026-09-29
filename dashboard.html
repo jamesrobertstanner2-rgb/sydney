@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard | Sydney Roleplay</title>
+
+    <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+
+
+<body class="dashboard-body">
+
+
+<div class="dashboard-layout">
+
+
+    <!-- ========================================
+         SIDEBAR
+    ======================================== -->
+
+    <aside class="dashboard-sidebar">
+
+
+        <a
+            href="index.html"
+            class="dashboard-brand"
+        >
+
+            <img
+                src="assets/images/logo.png"
+                alt="Sydney Roleplay"
+            >
+
+            <div>
+
+                <strong>
+                    Sydney Roleplay
+                </strong>
+
+                <span>
+                    MEMBER PORTAL
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <nav class="dashboard-nav">
+
+            <p class="dashboard-nav-label">
+                ACCOUNT
+            </p>
+
+
+            <a
+                href="dashboard.html"
+                class="active"
+            >
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+
+            <a href="#">
+                <span>◎</span>
+                My Profile
+            </a>
+
+
+            <a href="#">
+                <span>◇</span>
+                Roblox Account
+            </a>
+
+
+            <p class="dashboard-nav-label">
+                COMMUNITY
+            </p>
+
+
+            <a href="server.html">
+                <span>◉</span>
+                Live Server
+            </a>
+
+
+            <a href="departments.html">
+                <span>▦</span>
+                Departments
+            </a>
+
+
+            <a href="regulations.html">
+                <span>≡</span>
+                Regulations
+            </a>
+
+        </nav>
+
+
+        <div class="dashboard-sidebar-bottom">
+
+            <a href="index.html">
+                ← Return to Website
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ========================================
+         MAIN DASHBOARD
+    ======================================== -->
+
+    <main class="dashboard-main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="dashboard-topbar">
+
+            <div>
+
+                <p class="dashboard-small-label">
+                    MEMBER PORTAL
+                </p>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+            </div>
+
+
+            <div class="dashboard-account">
+
+                <div class="dashboard-avatar">
+                    J
+                </div>
+
+                <div>
+
+                    <strong id="dashboardUsername">
+                        Example User
+                    </strong>
+
+                    <span>
+                        Sydney Roleplay Member
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- WELCOME -->
+
+        <section class="dashboard-welcome">
+
+            <div>
+
+                <p class="section-label">
+                    WELCOME BACK
+                </p>
+
+                <h2>
+                    G'day,
+                    <span id="welcomeUsername">
+                        Example User
+                    </span>.
+                </h2>
+
+                <p>
+                    Welcome to your Sydney Roleplay
+                    member dashboard.
+                </p>
+
+            </div>
+
+
+            <div class="dashboard-status">
+
+                <span class="dashboard-status-dot"></span>
+
+                ACCOUNT ACTIVE
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ACCOUNT CARDS -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- DISCORD -->
+
+            <article class="dashboard-card">
+
+                <div class="dashboard-card-top">
+
+                    <span class="dashboard-card-number">
+                        01
+                    </span>
+
+                    <span class="dashboard-connected">
+                        CONNECTED
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Discord Account
+                </h3>
+
+
+                <p>
+                    Your Discord account is connected
+                    to Sydney Roleplay.
+                </p>
+
+
+                <div class="dashboard-account-info">
+
+                    <div class="dashboard-mini-avatar">
+                        J
+                    </div>
+
+                    <div>
+
+                        <span>
+                            DISCORD USER
+                        </span>
+
+                        <strong>
+                            ExampleUser
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ROBLOX -->
+
+            <article class="dashboard-card blue">
+
+                <div class="dashboard-card-top">
+
+                    <span class="dashboard-card-number">
+                        02
+                    </span>
+
+                    <span class="dashboard-not-connected">
+                        NOT CONNECTED
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Roblox Account
+                </h3>
+
+
+                <p>
+                    Connect your Roblox account to
+                    complete your Sydney Roleplay
+                    member profile.
+                </p>
+
+
+                <button
+                    class="dashboard-action-button"
+                    type="button"
+                >
+                    Connect Roblox
+                    <span>→</span>
+                </button>
+
+            </article>
+
+
+
+            <!-- SERVER -->
+
+            <article class="dashboard-card">
+
+                <div class="dashboard-card-top">
+
+                    <span class="dashboard-card-number">
+                        03
+                    </span>
+
+                    <span
+                        class="dashboard-server-status"
+                        id="dashboardServerStatus"
+                    >
+                        CHECKING
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    Live Server
+                </h3>
+
+
+                <p>
+                    See what's currently happening
+                    inside Sydney Roleplay.
+                </p>
+
+
+                <div class="dashboard-server-stats">
+
+                    <div>
+
+                        <span>
+                            PLAYERS
+                        </span>
+
+                        <strong id="dashboardPlayers">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            STAFF
+                        </span>
+
+                        <strong id="dashboardStaff">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="server.html"
+                    class="dashboard-text-link"
+                >
+                    View Live Server →
+                </a>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- PROFILE -->
+
+        <section class="dashboard-profile-section">
+
+            <div class="dashboard-section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        YOUR ACCOUNT
+                    </p>
+
+                    <h2>
+                        Member Profile
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-profile-card">
+
+
+                <div class="dashboard-profile-avatar">
+                    J
+                </div>
+
+
+                <div class="dashboard-profile-details">
+
+                    <p>
+                        DISCORD USERNAME
+                    </p>
+
+                    <strong>
+                        ExampleUser
+                    </strong>
+
+                </div>
+
+
+                <div class="dashboard-profile-details">
+
+                    <p>
+                        ROBLOX
+                    </p>
+
+                    <strong class="profile-unverified">
+                        Not Connected
+                    </strong>
+
+                </div>
+
+
+                <div class="dashboard-profile-details">
+
+                    <p>
+                        MEMBER STATUS
+                    </p>
+
+                    <strong class="profile-active">
+                        Active
+                    </strong>
+
+                </div>
+
+
+                <button
+                    class="dashboard-profile-button"
+                    type="button"
+                >
+                    View Profile
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<script src="js/dashboard.js"></script>
+
+</body>
+
+</html>
