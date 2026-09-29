@@ -2,21 +2,44 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Login | Sydney Roleplay</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css"
+    >
+
 </head>
+
 
 <body class="account-body">
 
+
     <main class="login-page">
+
 
         <section class="login-card">
 
-            <a href="index.html" class="login-logo">
+
+            <!-- LOGO -->
+
+            <a
+                href="index.html"
+                class="login-logo"
+            >
 
                 <img
                     src="assets/images/logo.png"
@@ -29,6 +52,9 @@
 
             </a>
 
+
+
+            <!-- LOGIN HEADING -->
 
             <div class="login-heading">
 
@@ -48,10 +74,12 @@
             </div>
 
 
-            <button
+
+            <!-- DISCORD LOGIN -->
+
+            <a
+                href="/api/auth/discord"
                 class="discord-login-button"
-                id="discordLogin"
-                type="button"
             >
 
                 <span class="discord-icon">
@@ -60,8 +88,11 @@
 
                 Continue with Discord
 
-            </button>
+            </a>
 
+
+
+            <!-- SECURITY INFORMATION -->
 
             <div class="login-info">
 
@@ -78,6 +109,9 @@
             </div>
 
 
+
+            <!-- RETURN -->
+
             <a
                 href="index.html"
                 class="login-return"
@@ -85,33 +119,12 @@
                 ← Return to Sydney Roleplay
             </a>
 
+
         </section>
+
 
     </main>
 
-
-    <script>
-
-        const loginButton =
-            document.getElementById("discordLogin");
-
-
-        loginButton.addEventListener(
-            "click",
-            () => {
-
-                /*
-                    Discord OAuth will be connected
-                    here in the next stage.
-                */
-
-                window.location.href =
-                    "dashboard.html";
-
-            }
-        );
-
-    </script>
 
 </body>
 

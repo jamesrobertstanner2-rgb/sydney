@@ -1,0 +1,1161 @@
+/* ========================================
+   SYDNEY ROLEPLAY
+   MEMBER PORTAL / DASHBOARD
+======================================== */
+
+
+/* ========================================
+   ACCOUNT PAGE
+======================================== */
+
+.account-body {
+    min-height: 100vh;
+    margin: 0;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(143, 240, 181, 0.09),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(114, 199, 255, 0.07),
+            transparent 30%
+        ),
+        #050908;
+}
+
+
+.login-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+}
+
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+
+    padding: 42px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(143, 240, 181, 0.025),
+            rgba(114, 199, 255, 0.015)
+        ),
+        #09100e;
+
+    border: 1px solid #18251f;
+    border-radius: 16px;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0, 0, 0, 0.35);
+}
+
+
+.login-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+
+.login-logo img {
+    width: 38px;
+    height: 38px;
+
+    object-fit: contain;
+}
+
+
+.login-heading {
+    margin-top: 55px;
+}
+
+
+.login-heading h1 {
+    margin: 8px 0 15px;
+
+    color: white;
+
+    font-size: 38px;
+    line-height: 1;
+
+    letter-spacing: -2px;
+}
+
+
+.login-heading > p:last-child {
+    color: #7d8b83;
+
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+
+.discord-login-button {
+    width: 100%;
+
+    margin-top: 30px;
+
+    padding: 14px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    background: #8ff0b5;
+
+    color: #051009;
+
+    border: none;
+    border-radius: 8px;
+
+    font-family: inherit;
+
+    font-size: 10px;
+    font-weight: 850;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.discord-login-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(143, 240, 181, 0.12);
+}
+
+
+.discord-icon {
+    font-size: 16px;
+}
+
+
+.login-info {
+    margin-top: 20px;
+
+    padding: 17px;
+
+    background:
+        rgba(255, 255, 255, 0.018);
+
+    border:
+        1px solid #15201b;
+
+    border-radius: 8px;
+}
+
+
+.login-info span {
+    color: #8ff0b5;
+
+    font-size: 7px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.login-info p {
+    margin-top: 7px;
+
+    color: #647169;
+
+    font-size: 8px;
+    line-height: 1.7;
+}
+
+
+.login-return {
+    margin-top: 25px;
+
+    display: block;
+
+    color: #69776f;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    text-align: center;
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+
+.login-return:hover {
+    color: #8ff0b5;
+}
+
+
+/* ========================================
+   DASHBOARD
+======================================== */
+
+.dashboard-body {
+    min-height: 100vh;
+    margin: 0;
+
+    background: #050908;
+
+    color: white;
+}
+
+
+.dashboard-layout {
+    min-height: 100vh;
+
+    display: grid;
+
+    grid-template-columns:
+        245px 1fr;
+}
+
+
+/* ========================================
+   SIDEBAR
+======================================== */
+
+.dashboard-sidebar {
+    height: 100vh;
+
+    position: sticky;
+    top: 0;
+
+    padding: 27px 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(143, 240, 181, 0.025),
+            transparent 30%
+        ),
+        #070c0a;
+
+    border-right:
+        1px solid #15201b;
+}
+
+
+.dashboard-brand {
+    padding: 0 8px 25px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-bottom:
+        1px solid #15201b;
+}
+
+
+.dashboard-brand img {
+    width: 38px;
+    height: 38px;
+
+    object-fit: contain;
+}
+
+
+.dashboard-brand div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.dashboard-brand strong {
+    font-size: 10px;
+}
+
+
+.dashboard-brand span {
+    color: #647169;
+
+    font-size: 6px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.dashboard-nav {
+    margin-top: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.dashboard-nav-label {
+    margin:
+        18px 10px 8px;
+
+    color: #46534c;
+
+    font-size: 6px;
+    font-weight: 900;
+
+    letter-spacing: 1.3px;
+}
+
+
+.dashboard-nav a {
+    padding: 11px 12px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: #77857d;
+
+    border: 1px solid transparent;
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    font-size: 8px;
+    font-weight: 750;
+
+    transition: 0.2s;
+}
+
+
+.dashboard-nav a span {
+    width: 17px;
+
+    color: #56635c;
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+.dashboard-nav a:hover {
+    color: #c8d3cd;
+
+    background:
+        rgba(255, 255, 255, 0.018);
+}
+
+
+.dashboard-nav a.active {
+    color: #8ff0b5;
+
+    background:
+        rgba(143, 240, 181, 0.055);
+
+    border-color:
+        rgba(143, 240, 181, 0.1);
+}
+
+
+.dashboard-nav a.active span {
+    color: #8ff0b5;
+}
+
+
+.dashboard-sidebar-bottom {
+    margin-top: auto;
+
+    padding:
+        20px 8px 0;
+
+    border-top:
+        1px solid #15201b;
+}
+
+
+.dashboard-sidebar-bottom a {
+    color: #66736c;
+
+    font-size: 7px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.dashboard-sidebar-bottom a:hover {
+    color: #8ff0b5;
+}
+
+
+/* ========================================
+   MAIN DASHBOARD
+======================================== */
+
+.dashboard-main {
+    min-width: 0;
+
+    padding:
+        35px 45px 70px;
+
+    background:
+        radial-gradient(
+            circle at 15% 5%,
+            rgba(143, 240, 181, 0.045),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 90% 5%,
+            rgba(114, 199, 255, 0.035),
+            transparent 25%
+        ),
+        #050908;
+}
+
+
+/* ========================================
+   TOP BAR
+======================================== */
+
+.dashboard-topbar {
+    max-width: 1250px;
+
+    margin: auto;
+
+    padding-bottom: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom:
+        1px solid #15201b;
+}
+
+
+.dashboard-small-label {
+    margin-bottom: 5px;
+
+    color: #57645d;
+
+    font-size: 6px;
+    font-weight: 900;
+
+    letter-spacing: 1.2px;
+}
+
+
+.dashboard-topbar h1 {
+    margin: 0;
+
+    font-size: 23px;
+
+    letter-spacing: -1px;
+}
+
+
+.dashboard-account {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.dashboard-avatar,
+.dashboard-mini-avatar {
+    width: 37px;
+    height: 37px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(143, 240, 181, 0.13),
+            rgba(114, 199, 255, 0.09)
+        );
+
+    color: #8ff0b5;
+
+    border:
+        1px solid
+        rgba(143, 240, 181, 0.13);
+
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+
+.dashboard-account > div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.dashboard-account strong {
+    font-size: 8px;
+}
+
+
+.dashboard-account span {
+    color: #647169;
+
+    font-size: 6px;
+}
+
+
+/* ========================================
+   WELCOME
+======================================== */
+
+.dashboard-welcome {
+    max-width: 1250px;
+
+    margin:
+        45px auto 25px;
+
+    padding: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(143, 240, 181, 0.055),
+            rgba(114, 199, 255, 0.025)
+        ),
+        #09100e;
+
+    border: 1px solid #18251f;
+    border-radius: 13px;
+}
+
+
+.dashboard-welcome h2 {
+    margin: 7px 0 8px;
+
+    font-size: 30px;
+
+    letter-spacing: -1.5px;
+}
+
+
+.dashboard-welcome h2 span {
+    color: #8ff0b5;
+}
+
+
+.dashboard-welcome > div > p:last-child {
+    color: #728078;
+
+    font-size: 9px;
+}
+
+
+.dashboard-status {
+    padding: 9px 12px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #8ff0b5;
+
+    border:
+        1px solid
+        rgba(143, 240, 181, 0.12);
+
+    border-radius: 100px;
+
+    font-size: 6px;
+    font-weight: 900;
+
+    letter-spacing: 0.8px;
+}
+
+
+.dashboard-status-dot {
+    width: 5px;
+    height: 5px;
+
+    background: #8ff0b5;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 8px
+        rgba(143, 240, 181, 0.7);
+}
+
+
+/* ========================================
+   DASHBOARD CARDS
+======================================== */
+
+.dashboard-grid {
+    max-width: 1250px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 14px;
+}
+
+
+.dashboard-card {
+    min-height: 275px;
+
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        #09100e;
+
+    border:
+        1px solid #18251f;
+
+    border-radius: 11px;
+}
+
+
+.dashboard-card.blue {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(114, 199, 255, 0.025),
+            transparent
+        ),
+        #09100e;
+}
+
+
+.dashboard-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.dashboard-card-number {
+    color: #8ff0b5;
+
+    font-size: 7px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+}
+
+
+.dashboard-card.blue
+.dashboard-card-number {
+    color: #72c7ff;
+}
+
+
+.dashboard-connected,
+.dashboard-not-connected,
+.dashboard-server-status {
+    padding: 5px 7px;
+
+    border-radius: 4px;
+
+    font-size: 5px;
+    font-weight: 900;
+
+    letter-spacing: 0.7px;
+}
+
+
+.dashboard-connected {
+    color: #8ff0b5;
+
+    background:
+        rgba(143, 240, 181, 0.05);
+
+    border:
+        1px solid
+        rgba(143, 240, 181, 0.1);
+}
+
+
+.dashboard-not-connected {
+    color: #72c7ff;
+
+    background:
+        rgba(114, 199, 255, 0.05);
+
+    border:
+        1px solid
+        rgba(114, 199, 255, 0.1);
+}
+
+
+.dashboard-server-status {
+    color: #7b8881;
+
+    border:
+        1px solid #202c26;
+}
+
+
+.dashboard-server-status.online {
+    color: #8ff0b5;
+
+    border-color:
+        rgba(143, 240, 181, 0.13);
+
+    background:
+        rgba(143, 240, 181, 0.04);
+}
+
+
+.dashboard-card h3 {
+    margin:
+        45px 0 9px;
+
+    font-size: 15px;
+}
+
+
+.dashboard-card > p {
+    color: #6c7972;
+
+    font-size: 8px;
+    line-height: 1.7;
+}
+
+
+.dashboard-account-info {
+    margin-top: auto;
+
+    padding-top: 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.dashboard-mini-avatar {
+    width: 32px;
+    height: 32px;
+
+    font-size: 10px;
+}
+
+
+.dashboard-account-info > div:last-child {
+    display: flex;
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.dashboard-account-info span {
+    color: #526058;
+
+    font-size: 5px;
+    font-weight: 900;
+
+    letter-spacing: 0.8px;
+}
+
+
+.dashboard-account-info strong {
+    font-size: 8px;
+}
+
+
+/* ========================================
+   ACTION BUTTON
+======================================== */
+
+.dashboard-action-button {
+    margin-top: auto;
+
+    padding: 10px 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background:
+        rgba(114, 199, 255, 0.07);
+
+    color: #72c7ff;
+
+    border:
+        1px solid
+        rgba(114, 199, 255, 0.13);
+
+    border-radius: 6px;
+
+    font-family: inherit;
+
+    font-size: 7px;
+    font-weight: 850;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.dashboard-action-button:hover {
+    background:
+        rgba(114, 199, 255, 0.11);
+
+    transform: translateY(-1px);
+}
+
+
+/* ========================================
+   SERVER STATS
+======================================== */
+
+.dashboard-server-stats {
+    margin-top: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    border:
+        1px solid #18251f;
+
+    border-radius: 7px;
+
+    overflow: hidden;
+}
+
+
+.dashboard-server-stats div {
+    padding: 13px;
+}
+
+
+.dashboard-server-stats div:first-child {
+    border-right:
+        1px solid #18251f;
+}
+
+
+.dashboard-server-stats span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #526058;
+
+    font-size: 5px;
+    font-weight: 900;
+
+    letter-spacing: 0.8px;
+}
+
+
+.dashboard-server-stats strong {
+    color: #8ff0b5;
+
+    font-size: 14px;
+}
+
+
+.dashboard-text-link {
+    margin-top: 13px;
+
+    color: #8ff0b5;
+
+    font-size: 7px;
+    font-weight: 800;
+
+    text-decoration: none;
+}
+
+
+/* ========================================
+   MEMBER PROFILE
+======================================== */
+
+.dashboard-profile-section {
+    max-width: 1250px;
+
+    margin:
+        55px auto 0;
+}
+
+
+.dashboard-section-heading {
+    margin-bottom: 15px;
+}
+
+
+.dashboard-section-heading h2 {
+    margin-top: 5px;
+
+    font-size: 21px;
+
+    letter-spacing: -0.7px;
+}
+
+
+.dashboard-profile-card {
+    padding: 22px;
+
+    display: grid;
+
+    grid-template-columns:
+        auto 1fr 1fr 1fr auto;
+
+    align-items: center;
+
+    gap: 25px;
+
+    background:
+        #09100e;
+
+    border:
+        1px solid #18251f;
+
+    border-radius: 11px;
+}
+
+
+.dashboard-profile-avatar {
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(143, 240, 181, 0.13),
+            rgba(114, 199, 255, 0.08)
+        );
+
+    color: #8ff0b5;
+
+    border:
+        1px solid
+        rgba(143, 240, 181, 0.14);
+
+    border-radius: 9px;
+
+    font-size: 16px;
+    font-weight: 900;
+}
+
+
+.dashboard-profile-details p {
+    margin-bottom: 5px;
+
+    color: #526058;
+
+    font-size: 5px;
+    font-weight: 900;
+
+    letter-spacing: 0.8px;
+}
+
+
+.dashboard-profile-details strong {
+    font-size: 8px;
+}
+
+
+.profile-unverified {
+    color: #72c7ff;
+}
+
+
+.profile-active {
+    color: #8ff0b5;
+}
+
+
+.dashboard-profile-button {
+    padding: 9px 12px;
+
+    background:
+        transparent;
+
+    color: #8ff0b5;
+
+    border:
+        1px solid
+        rgba(143, 240, 181, 0.14);
+
+    border-radius: 6px;
+
+    font-family: inherit;
+
+    font-size: 7px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.dashboard-profile-button:hover {
+    background:
+        rgba(143, 240, 181, 0.05);
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 950px) {
+
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .dashboard-sidebar {
+        height: auto;
+
+        position: relative;
+
+        border-right: none;
+
+        border-bottom:
+            1px solid #15201b;
+    }
+
+
+    .dashboard-nav {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .dashboard-nav-label {
+        grid-column:
+            1 / -1;
+    }
+
+
+    .dashboard-sidebar-bottom {
+        margin-top: 20px;
+    }
+
+
+    .dashboard-main {
+        padding:
+            30px 20px 60px;
+    }
+
+
+    .dashboard-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .dashboard-profile-card {
+        grid-template-columns:
+            1fr;
+
+        align-items:
+            flex-start;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .login-card {
+        padding: 30px 24px;
+    }
+
+
+    .dashboard-topbar {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap: 20px;
+    }
+
+
+    .dashboard-welcome {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        padding: 25px;
+    }
+
+
+    .dashboard-nav {
+        grid-template-columns: 1fr;
+    }
+
+}.discord-login-button {
+    text-decoration: none;
+}
