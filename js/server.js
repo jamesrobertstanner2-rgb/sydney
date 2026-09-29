@@ -1,463 +1,978 @@
 /* ========================================
    SYDNEY ROLEPLAY
-   LIVE ER:LC SERVER
+   LIVE SERVER V2
 ======================================== */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-        const playerCount =
-            document.getElementById(
-                "playerCount"
-            );
+    /* ========================================
+       ELEMENTS
+    ======================================== */
 
-        const queueCount =
-            document.getElementById(
-                "queueCount"
-            );
+    const serverName =
+        document.getElementById("serverName");
 
-        const staffCount =
-            document.getElementById(
-                "staffCount"
-            );
+    const serverStatus =
+        document.getElementById("serverStatus");
 
-        const serverCapacity =
-            document.getElementById(
-                "serverCapacity"
-            );
+    const serverStatusBadge =
+        document.getElementById("serverStatusBadge");
 
-        const serverStatus =
-            document.getElementById(
-                "serverStatus"
-            );
+    const playerCount =
+        document.getElementById("playerCount");
 
-        const serverStatusBadge =
-            document.getElementById(
-                "serverStatusBadge"
-            );
+    const queueCount =
+        document.getElementById("queueCount");
 
-        const playerList =
-            document.getElementById(
-                "playerList"
-            );
+    const staffCount =
+        document.getElementById("staffCount");
 
-        const playerSearch =
-            document.getElementById(
-                "playerSearch"
-            );
+    const serverCapacity =
+        document.getElementById("serverCapacity");
 
+    const capacityText =
+        document.getElementById("capacityText");
 
-        let players = [];
+    const capacityPercent =
+        document.getElementById("capacityPercent");
 
+    const capacityFill =
+        document.getElementById("capacityFill");
 
-        /* ========================================
-           LOAD SERVER
-        ======================================== */
+    const lastUpdated =
+        document.getElementById("lastUpdated");
 
-        async function loadServer() {
+    const playerSummary =
+        document.getElementById("playerSummary");
 
-            try {
+    const playerList =
+        document.getElementById("playerList");
 
-                const response =
-                    await fetch(
-                        "/api/server"
-                    );
+    const playerSearch =
+        document.getElementById("playerSearch");
 
+    const teamFilter =
+        document.getElementById("teamFilter");
 
-                const data =
-                    await response.json();
+    const staffFilter =
+        document.getElementById("staffFilter");
+
+    const refreshButton =
+        document.getElementById("refreshServer");
+
+    const refreshIcon =
+        document.getElementById("refreshIcon");
 
 
-                if (!response.ok) {
+    /* ========================================
+       STATE
+    ======================================== */
 
-                    throw new Error(
-                        data.error ||
-                        "Unable to load server."
-                    );
+    let players = [];
 
-                }
+    let currentTeam = "all";
 
+    let staffOnly = false;
 
-                players =
-                    data.players || [];
-
-
-                updateStatus(
-                    data.online
-                );
+    let loading = false;
 
 
-                updateStats(
-                    data
-                );
+    /* ========================================
+       LOAD SERVER
+    ======================================== */
 
+    async function loadServer() {
 
-                displayPlayers(
-                    players
-                );
-
-
-            } catch (error) {
-
-                console.error(
-                    "Live Server Error:",
-                    error
-                );
-
-
-                showOffline();
-
-            }
-
+        if (loading) {
+            return;
         }
 
 
+        loading = true;
 
-        /* ========================================
-           SERVER STATUS
-        ======================================== */
+        setRefreshLoading(true);
 
-        function updateStatus(online) {
 
-            serverStatusBadge
-                .classList
-                .remove(
-                    "online",
-                    "offline"
+        try {
+
+            const response =
+                await fetch(
+                    "/api/server",
+                    {
+                        cache: "no-store"
+                    }
                 );
 
 
-            if (online) {
-
-                serverStatus.textContent =
-                    "Server Online";
-
-                serverStatusBadge
-                    .classList
-                    .add("online");
-
-            } else {
-
-                serverStatus.textContent =
-                    "Server Offline";
-
-                serverStatusBadge
-                    .classList
-                    .add("offline");
-
-            }
-
-        }
+            const data =
+                await response.json();
 
 
+            if (!response.ok) {
 
-        /* ========================================
-           STATISTICS
-        ======================================== */
-
-        function updateStats(data) {
-
-            playerCount.textContent =
-                `${data.currentPlayers} / ${data.maxPlayers}`;
-
-
-            queueCount.textContent =
-                data.queue ?? 0;
-
-
-            staffCount.textContent =
-                data.staff ?? 0;
-
-
-            serverCapacity.textContent =
-                data.maxPlayers ?? "--";
-
-        }
-
-
-
-        /* ========================================
-           PLAYER LIST
-        ======================================== */
-
-        function displayPlayers(
-            playerArray
-        ) {
-
-            playerList.innerHTML = "";
-
-
-            if (
-                !playerArray ||
-                playerArray.length === 0
-            ) {
-
-                playerList.innerHTML = `
-
-                    <div class="no-players">
-
-                        <span>○</span>
-
-                        <h3>
-                            No players online
-                        </h3>
-
-                        <p>
-                            There are currently no
-                            players in the server.
-                        </p>
-
-                    </div>
-
-                `;
-
-                return;
+                throw new Error(
+                    data.error ||
+                    "Unable to retrieve server."
+                );
 
             }
 
 
-            playerArray.forEach(
-                player => {
-
-                    const row =
-                        document.createElement(
-                            "div"
-                        );
+            players =
+                Array.isArray(data.players)
+                    ? data.players
+                    : [];
 
 
-                    row.className =
-                        "player-row";
+            updateServer(data);
+
+            buildTeamFilter();
+
+            applyFilters();
+
+            setOnline(true);
+
+            updateTimestamp();
 
 
-                    const initial =
-                        (
-                            player.username ||
-                            "?"
-                        )
-                        .charAt(0)
-                        .toUpperCase();
+        } catch (error) {
 
-
-                    row.innerHTML = `
-
-                        <div class="player-name">
-
-                            <div
-                                class="player-avatar"
-                            >
-                                ${escapeHTML(initial)}
-                            </div>
-
-
-                            <div>
-
-                                <strong>
-                                    ${escapeHTML(
-                                        player.username
-                                    )}
-                                </strong>
-
-
-                                ${
-                                    player.staff
-
-                                    ? `
-
-                                    <span
-                                        class="staff-tag"
-                                    >
-                                        STAFF
-                                    </span>
-
-                                    `
-
-                                    : ""
-                                }
-
-                            </div>
-
-                        </div>
-
-
-                        <div
-                            class="player-team"
-                        >
-                            ${escapeHTML(
-                                player.team
-                            )}
-                        </div>
-
-
-                        <div
-                            class="player-callsign"
-                        >
-                            ${escapeHTML(
-                                player.callsign
-                            )}
-                        </div>
-
-                    `;
-
-
-                    playerList.appendChild(
-                        row
-                    );
-
-                }
+            console.error(
+                "Sydney Roleplay Live Server Error:",
+                error
             );
+
+
+            showError();
+
+        } finally {
+
+            loading = false;
+
+            setRefreshLoading(false);
+
+        }
+
+    }
+
+
+    /* ========================================
+       UPDATE SERVER
+    ======================================== */
+
+    function updateServer(data) {
+
+        if (serverName) {
+
+            serverName.textContent =
+                data.name ||
+                "Sydney Roleplay";
 
         }
 
 
-
-        /* ========================================
-           SEARCH
-        ======================================== */
-
-        if (playerSearch) {
-
-            playerSearch.addEventListener(
-                "input",
-                () => {
-
-                    const search =
-                        playerSearch
-                            .value
-                            .toLowerCase()
-                            .trim();
+        const current =
+            Number(
+                data.currentPlayers ??
+                players.length
+            );
 
 
-                    const filtered =
-                        players.filter(
-                            player => {
-
-                                return (
-
-                                    player.username
-                                        .toLowerCase()
-                                        .includes(
-                                            search
-                                        )
-
-                                    ||
-
-                                    player.team
-                                        .toLowerCase()
-                                        .includes(
-                                            search
-                                        )
-
-                                    ||
-
-                                    player.callsign
-                                        .toLowerCase()
-                                        .includes(
-                                            search
-                                        )
-
-                                );
-
-                            }
-                        );
+        const maximum =
+            Number(
+                data.maxPlayers ??
+                50
+            );
 
 
-                    displayPlayers(
-                        filtered
-                    );
+        const queue =
+            Number(
+                data.queue ??
+                0
+            );
 
-                }
+
+        const staff =
+            Number(
+                data.staff ??
+                0
+            );
+
+
+        playerCount.textContent =
+            `${current} / ${maximum}`;
+
+
+        queueCount.textContent =
+            queue;
+
+
+        staffCount.textContent =
+            staff;
+
+
+        serverCapacity.textContent =
+            maximum;
+
+
+        capacityText.textContent =
+            `${current} of ${maximum} slots occupied`;
+
+
+        const percent =
+            maximum > 0
+                ? Math.min(
+                    Math.round(
+                        (current / maximum) * 100
+                    ),
+                    100
+                )
+                : 0;
+
+
+        capacityPercent.textContent =
+            `${percent}%`;
+
+
+        capacityFill.style.width =
+            `${percent}%`;
+
+
+        playerSummary.textContent =
+
+            current === 1
+
+                ? "1 player currently online"
+
+                : `${current} players currently online`;
+
+    }
+
+
+    /* ========================================
+       ONLINE / OFFLINE
+    ======================================== */
+
+    function setOnline(online) {
+
+        serverStatusBadge.classList.remove(
+            "online",
+            "offline"
+        );
+
+
+        if (online) {
+
+            serverStatus.textContent =
+                "Server Online";
+
+            serverStatusBadge.classList.add(
+                "online"
+            );
+
+        } else {
+
+            serverStatus.textContent =
+                "Server Unavailable";
+
+            serverStatusBadge.classList.add(
+                "offline"
             );
 
         }
 
+    }
 
 
-        /* ========================================
-           OFFLINE / ERROR
-        ======================================== */
+    /* ========================================
+       PLAYER DISPLAY
+    ======================================== */
 
-        function showOffline() {
+    function displayPlayers(playerArray) {
 
-            updateStatus(false);
+        playerList.innerHTML = "";
 
 
-            playerCount.textContent =
-                "--";
-
-            queueCount.textContent =
-                "--";
-
-            staffCount.textContent =
-                "--";
-
-            serverCapacity.textContent =
-                "--";
-
+        if (playerArray.length === 0) {
 
             playerList.innerHTML = `
 
-                <div class="no-players">
+                <div class="server-v2-empty">
 
-                    <span>!</span>
+                    <div class="empty-player-icon">
+                        ○
+                    </div>
 
                     <h3>
-                        Server information unavailable
+                        No players found
                     </h3>
 
                     <p>
-                        We couldn't retrieve the live
-                        server information right now.
+                        No online players match
+                        the selected filters.
                     </p>
 
                 </div>
 
             `;
 
+            return;
+
         }
 
 
+        playerArray.forEach((player) => {
 
-        /* ========================================
-           SECURITY
-        ======================================== */
+            const username =
+                player.username ||
+                "Unknown Player";
 
-        function escapeHTML(value) {
 
-            const element =
+            const team =
+                player.team ||
+                "Unknown";
+
+
+            const callsign =
+                player.callsign ||
+                "—";
+
+
+            const permission =
+                player.permission ||
+                "Normal";
+
+
+            const row =
+                document.createElement("div");
+
+
+            row.className =
+                "player-row-v2";
+
+
+            row.innerHTML = `
+
+                <div class="player-v2-user">
+
+                    <div class="player-v2-avatar">
+
+                        ${escapeHTML(
+                            username
+                                .charAt(0)
+                                .toUpperCase()
+                        )}
+
+                    </div>
+
+
+                    <div class="player-v2-name">
+
+                        <strong>
+                            ${escapeHTML(username)}
+                        </strong>
+
+                        ${
+                            player.staff
+
+                            ? `
+                                <span class="player-online-dot">
+                                    STAFF
+                                </span>
+                              `
+
+                            : `
+                                <span class="player-member-text">
+                                    PLAYER
+                                </span>
+                              `
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <span
+                        class="team-badge
+                        ${getTeamClass(team)}"
+                    >
+                        ${escapeHTML(team)}
+                    </span>
+
+                </div>
+
+
+                <div class="player-v2-callsign">
+
+                    ${escapeHTML(callsign)}
+
+                </div>
+
+
+                <div>
+
+                    ${createPermissionBadge(
+                        permission
+                    )}
+
+                </div>
+
+            `;
+
+
+            playerList.appendChild(row);
+
+        });
+
+    }
+
+
+    /* ========================================
+       PERMISSION BADGES
+    ======================================== */
+
+    function createPermissionBadge(permission) {
+
+        const value =
+            String(
+                permission ||
+                "Normal"
+            );
+
+
+        const lower =
+            value.toLowerCase();
+
+
+        let badgeClass =
+            "permission-member";
+
+
+        if (
+            lower.includes("owner")
+        ) {
+
+            badgeClass =
+                "permission-owner";
+
+        } else if (
+            lower.includes("admin")
+        ) {
+
+            badgeClass =
+                "permission-admin";
+
+        } else if (
+            lower.includes("moderator") ||
+            lower.includes("mod")
+        ) {
+
+            badgeClass =
+                "permission-moderator";
+
+        } else if (
+            lower.includes("staff")
+        ) {
+
+            badgeClass =
+                "permission-staff";
+
+        }
+
+
+        const displayPermission =
+
+            lower === "normal"
+
+                ? "Member"
+
+                : value;
+
+
+        return `
+
+            <span
+                class="permission-badge
+                ${badgeClass}"
+            >
+                ${escapeHTML(
+                    displayPermission
+                )}
+            </span>
+
+        `;
+
+    }
+
+
+    /* ========================================
+       TEAM COLOURS
+    ======================================== */
+
+    function getTeamClass(team) {
+
+        const value =
+            String(team)
+                .toLowerCase();
+
+
+        if (
+            value.includes("police")
+        ) {
+
+            return "team-police";
+
+        }
+
+
+        if (
+            value.includes("sheriff")
+        ) {
+
+            return "team-police";
+
+        }
+
+
+        if (
+            value.includes("fire") ||
+            value.includes("ambulance") ||
+            value.includes("ems")
+        ) {
+
+            return "team-medical";
+
+        }
+
+
+        if (
+            value.includes("transport") ||
+            value.includes("dot")
+        ) {
+
+            return "team-dot";
+
+        }
+
+
+        if (
+            value.includes("civilian")
+        ) {
+
+            return "team-civilian";
+
+        }
+
+
+        return "team-other";
+
+    }
+
+
+    /* ========================================
+       BUILD TEAM FILTER
+    ======================================== */
+
+    function buildTeamFilter() {
+
+        const previous =
+            currentTeam;
+
+
+        const teams = [
+
+            ...new Set(
+
+                players
+
+                    .map(
+                        player =>
+                            player.team
+                    )
+
+                    .filter(Boolean)
+
+            )
+
+        ].sort();
+
+
+        teamFilter.innerHTML = `
+
+            <option value="all">
+                All Teams
+            </option>
+
+        `;
+
+
+        teams.forEach((team) => {
+
+            const option =
                 document.createElement(
-                    "div"
+                    "option"
                 );
 
 
-            element.textContent =
-                value ?? "";
+            option.value =
+                team;
 
 
-            return element.innerHTML;
+            option.textContent =
+                team;
+
+
+            teamFilter.appendChild(
+                option
+            );
+
+        });
+
+
+        if (
+            teams.includes(previous)
+        ) {
+
+            teamFilter.value =
+                previous;
+
+        } else {
+
+            currentTeam =
+                "all";
+
+            teamFilter.value =
+                "all";
 
         }
 
+    }
 
 
-        /* ========================================
-           START
-        ======================================== */
+    /* ========================================
+       FILTER PLAYERS
+    ======================================== */
 
-        loadServer();
+    function applyFilters() {
+
+        const search =
+            playerSearch.value
+                .toLowerCase()
+                .trim();
 
 
-        /*
-            Refresh every 30 seconds.
+        const filtered =
+            players.filter((player) => {
 
-            Don't make this extremely fast because
-            the ER:LC API has rate limits.
-        */
+                const username =
+                    String(
+                        player.username ||
+                        ""
+                    ).toLowerCase();
 
-        setInterval(
-            loadServer,
-            30000
-        );
+
+                const team =
+                    String(
+                        player.team ||
+                        ""
+                    ).toLowerCase();
+
+
+                const callsign =
+                    String(
+                        player.callsign ||
+                        ""
+                    ).toLowerCase();
+
+
+                const permission =
+                    String(
+                        player.permission ||
+                        ""
+                    ).toLowerCase();
+
+
+                const matchesSearch =
+
+                    username.includes(search) ||
+
+                    team.includes(search) ||
+
+                    callsign.includes(search) ||
+
+                    permission.includes(search);
+
+
+                const matchesTeam =
+
+                    currentTeam === "all" ||
+
+                    player.team ===
+                    currentTeam;
+
+
+                const matchesStaff =
+
+                    !staffOnly ||
+
+                    player.staff === true;
+
+
+                return (
+
+                    matchesSearch &&
+                    matchesTeam &&
+                    matchesStaff
+
+                );
+
+            });
+
+
+        displayPlayers(filtered);
 
     }
-);
+
+
+    /* ========================================
+       SEARCH
+    ======================================== */
+
+    playerSearch.addEventListener(
+        "input",
+        applyFilters
+    );
+
+
+    /* ========================================
+       TEAM FILTER
+    ======================================== */
+
+    teamFilter.addEventListener(
+        "change",
+        () => {
+
+            currentTeam =
+                teamFilter.value;
+
+            applyFilters();
+
+        }
+    );
+
+
+    /* ========================================
+       STAFF FILTER
+    ======================================== */
+
+    staffFilter.addEventListener(
+        "click",
+        () => {
+
+            staffOnly =
+                !staffOnly;
+
+
+            staffFilter.classList.toggle(
+                "active",
+                staffOnly
+            );
+
+
+            staffFilter.textContent =
+
+                staffOnly
+
+                    ? "✓ Staff Only"
+
+                    : "Staff Only";
+
+
+            applyFilters();
+
+        }
+    );
+
+
+    /* ========================================
+       MANUAL REFRESH
+    ======================================== */
+
+    refreshButton.addEventListener(
+        "click",
+        loadServer
+    );
+
+
+    function setRefreshLoading(value) {
+
+        refreshButton.disabled =
+            value;
+
+
+        refreshButton.classList.toggle(
+            "loading",
+            value
+        );
+
+
+        if (value) {
+
+            refreshIcon.textContent =
+                "↻";
+
+        }
+
+    }
+
+
+    /* ========================================
+       LAST UPDATED
+    ======================================== */
+
+    function updateTimestamp() {
+
+        const now =
+            new Date();
+
+
+        const time =
+            now.toLocaleTimeString(
+                [],
+                {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit"
+                }
+            );
+
+
+        lastUpdated.textContent =
+            `Updated ${time}`;
+
+    }
+
+
+    /* ========================================
+       ERROR STATE
+    ======================================== */
+
+    function showError() {
+
+        setOnline(false);
+
+
+        playerCount.textContent =
+            "--";
+
+        queueCount.textContent =
+            "--";
+
+        staffCount.textContent =
+            "--";
+
+        serverCapacity.textContent =
+            "--";
+
+        capacityText.textContent =
+            "Information unavailable";
+
+        capacityPercent.textContent =
+            "--";
+
+        capacityFill.style.width =
+            "0%";
+
+        playerSummary.textContent =
+            "Unable to retrieve players";
+
+
+        playerList.innerHTML = `
+
+            <div class="server-v2-empty">
+
+                <div class="empty-player-icon error">
+                    !
+                </div>
+
+                <h3>
+                    Server information unavailable
+                </h3>
+
+                <p>
+                    Sydney Roleplay could not connect
+                    to the live ER:LC server.
+                </p>
+
+                <button
+                    class="empty-retry-button"
+                    id="retryServer"
+                    type="button"
+                >
+                    Try Again
+                </button>
+
+            </div>
+
+        `;
+
+
+        const retry =
+            document.getElementById(
+                "retryServer"
+            );
+
+
+        if (retry) {
+
+            retry.addEventListener(
+                "click",
+                loadServer
+            );
+
+        }
+
+    }
+
+
+    /* ========================================
+       ESCAPE HTML
+    ======================================== */
+
+    function escapeHTML(value) {
+
+        const div =
+            document.createElement("div");
+
+
+        div.textContent =
+            value ?? "";
+
+
+        return div.innerHTML;
+
+    }
+
+
+    /* ========================================
+       START
+    ======================================== */
+
+    loadServer();
+
+
+    /* ========================================
+       AUTO REFRESH
+
+       Every 30 seconds
+    ======================================== */
+
+    setInterval(
+        loadServer,
+        30000
+    );
+
+});
