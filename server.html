@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="View the live Sydney Roleplay ER:LC private server."
+    >
+
+    <title>Live Server | Sydney Roleplay</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ========================================
+     NAVBAR
+======================================== -->
+
+<header class="navbar">
+
+    <a href="index.html" class="nav-brand">
+        <img
+            src="assets/images/logo.png"
+            alt="Sydney Roleplay Logo"
+        >
+
+        <span>Sydney Roleplay</span>
+    </a>
+
+
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Open navigation"
+    >
+        ☰
+    </button>
+
+
+    <nav class="nav-links" id="navLinks">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="server.html" class="active">
+            Live Server
+        </a>
+
+        <a href="updates.html">
+            Updates
+        </a>
+
+        <a href="departments.html">
+            Departments
+        </a>
+
+        <a href="regulations.html">
+            Regulations
+        </a>
+
+        <a href="contact.html" class="nav-button">
+            Contact
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- ========================================
+     PAGE
+======================================== -->
+
+<main class="server-v2-page">
+
+
+    <!-- ========================================
+         HEADER
+    ======================================== -->
+
+    <section class="server-v2-heading">
+
+        <div class="server-v2-title">
+
+            <p class="section-label">
+                SYDNEY ROLEPLAY
+            </p>
+
+            <h1>
+                Live <span>Server</span>
+            </h1>
+
+            <p>
+                Live information directly from the Sydney
+                Roleplay ER:LC private server.
+            </p>
+
+        </div>
+
+
+        <div class="server-v2-status-area">
+
+            <div
+                class="server-status-badge"
+                id="serverStatusBadge"
+            >
+                <span class="status-dot"></span>
+
+                <span id="serverStatus">
+                    Connecting...
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         MAIN SERVER CARD
+    ======================================== -->
+
+    <section class="server-v2-card">
+
+        <div class="server-v2-card-top">
+
+            <div>
+
+                <div class="server-v2-live-label">
+                    <span></span>
+                    LIVE SERVER
+                </div>
+
+                <h2 id="serverName">
+                    Sydney Roleplay
+                </h2>
+
+                <p>
+                    ER:LC Private Server
+                </p>
+
+            </div>
+
+
+            <div class="server-v2-actions">
+
+                <button
+                    class="server-refresh-button"
+                    id="refreshServer"
+                    type="button"
+                >
+                    <span id="refreshIcon">↻</span>
+                    Refresh
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="server-v2-stats">
+
+            <div class="server-v2-stat">
+
+                <p>
+                    PLAYERS
+                </p>
+
+                <strong id="playerCount">
+                    --
+                </strong>
+
+                <span id="capacityText">
+                    Loading...
+                </span>
+
+            </div>
+
+
+            <div class="server-v2-stat blue">
+
+                <p>
+                    QUEUE
+                </p>
+
+                <strong id="queueCount">
+                    --
+                </strong>
+
+                <span>
+                    Waiting to join
+                </span>
+
+            </div>
+
+
+            <div class="server-v2-stat">
+
+                <p>
+                    STAFF
+                </p>
+
+                <strong id="staffCount">
+                    --
+                </strong>
+
+                <span>
+                    Currently online
+                </span>
+
+            </div>
+
+
+            <div class="server-v2-stat blue">
+
+                <p>
+                    CAPACITY
+                </p>
+
+                <strong id="serverCapacity">
+                    --
+                </strong>
+
+                <span>
+                    Maximum players
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- PLAYER BAR -->
+
+        <div class="server-capacity-container">
+
+            <div class="server-capacity-top">
+
+                <span>
+                    Server Capacity
+                </span>
+
+                <span id="capacityPercent">
+                    0%
+                </span>
+
+            </div>
+
+
+            <div class="server-capacity-bar">
+
+                <div
+                    class="server-capacity-fill"
+                    id="capacityFill"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- LAST UPDATE -->
+
+        <div class="server-v2-update">
+
+            <span class="update-pulse"></span>
+
+            <span>
+                Live data
+            </span>
+
+            <span class="update-divider">
+                •
+            </span>
+
+            <span id="lastUpdated">
+                Waiting for server...
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         CURRENT PLAYERS
+    ======================================== -->
+
+    <section class="server-v2-players">
+
+        <div class="server-v2-players-heading">
+
+            <div>
+
+                <p class="section-label">
+                    CURRENTLY IN-GAME
+                </p>
+
+                <h2>
+                    Current Players
+                </h2>
+
+                <p id="playerSummary">
+                    Loading players...
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONTROLS -->
+
+        <div class="player-controls">
+
+            <div class="player-search-v2">
+
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    id="playerSearch"
+                    placeholder="Search player, team or callsign..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <select
+                id="teamFilter"
+                class="player-filter"
+            >
+                <option value="all">
+                    All Teams
+                </option>
+            </select>
+
+
+            <button
+                id="staffFilter"
+                class="staff-filter-button"
+                type="button"
+            >
+                Staff Only
+            </button>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="player-table-v2">
+
+            <div class="player-table-v2-header">
+
+                <span>
+                    PLAYER
+                </span>
+
+                <span>
+                    TEAM
+                </span>
+
+                <span>
+                    CALLSIGN
+                </span>
+
+                <span>
+                    PERMISSION
+                </span>
+
+            </div>
+
+
+            <div id="playerList">
+
+                <div class="server-v2-loading">
+
+                    <div class="server-loader"></div>
+
+                    <h3>
+                        Connecting to ER:LC
+                    </h3>
+
+                    <p>
+                        Retrieving live server information...
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================
+         INFORMATION
+    ======================================== -->
+
+    <section class="server-v2-info-grid">
+
+        <article class="server-v2-info-card">
+
+            <span class="server-v2-info-number">
+                01
+            </span>
+
+            <h3>
+                Live Information
+            </h3>
+
+            <p>
+                Server information is automatically
+                refreshed every 30 seconds using the
+                Sydney Roleplay live server connection.
+            </p>
+
+        </article>
+
+
+        <article class="server-v2-info-card blue">
+
+            <span class="server-v2-info-number">
+                02
+            </span>
+
+            <h3>
+                Our Departments
+            </h3>
+
+            <p>
+                Explore Sydney Roleplay's emergency
+                services and specialist divisions.
+            </p>
+
+            <a href="departments.html">
+                View Departments →
+            </a>
+
+        </article>
+
+
+        <article class="server-v2-info-card">
+
+            <span class="server-v2-info-number">
+                03
+            </span>
+
+            <h3>
+                Community
+            </h3>
+
+            <p>
+                Become part of Sydney Roleplay and
+                participate in Australian-based ER:LC
+                roleplay.
+            </p>
+
+        </article>
+
+    </section>
+
+</main>
+
+
+<!-- ========================================
+     FOOTER
+======================================== -->
+
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <div class="footer-brand">
+
+            <img
+                src="assets/images/logo.png"
+                alt="Sydney Roleplay Logo"
+            >
+
+            <span>
+                Sydney Roleplay
+            </span>
+
+        </div>
+
+
+        <p>
+            © 2026 Sydney Roleplay.
+            All rights reserved.
+        </p>
+
+
+        <p class="webora-credit">
+            Website designed & developed by
+            <span>Webora</span>
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="js/script.js"></script>
+<script src="js/server.js"></script>
+
+</body>
+
+</html>
