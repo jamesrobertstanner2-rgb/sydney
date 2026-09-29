@@ -18,16 +18,15 @@ export default async function handler(req, res) {
     try {
 
         const response = await fetch(
-            "https://api.policeroleplay.community/v2/server?Players=true&Queue=true&Staff=true",
-            {
-                method: "GET",
+    "https://api.policeroleplay.community/v2/server?Players=true&Queue=true&Staff=true",
+    {
+        method: "GET",
 
-                headers: {
-                    "server-key": serverKey,
-                    "Accept": "application/json"
-                }
-            }
-        );
+        headers: {
+            "Server-Key": serverKey
+        }
+    }
+);
 
 
         const text = await response.text();
